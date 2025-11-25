@@ -78,4 +78,6 @@ dependencies {
     val navigation_version = "2.9.6"
     implementation("androidx.navigation:navigation-fragment-ktx:$navigation_version")
     implementation("androidx.navigation:navigation-ui-ktx:$navigation_version")
+
+    implementation("com.github.ybq:Android-SpinKit:1.4.0")
 }
