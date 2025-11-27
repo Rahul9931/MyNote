@@ -2,4 +2,16 @@
     <string name="app_name">My Notes</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="create_new_account">Create New Account</string>
+    <string name="user_name">UserName</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="sign_up">SIGN UP</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="welcome_back">Welcome Back!</string>
+    <string name="login">LOGIN</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="register_now">Register Now</string>
+    <string name="txt_error_message">%1$S*</string>
+
 </resources>
