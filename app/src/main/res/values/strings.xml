@@ -13,5 +13,6 @@
     <string name="don_t_have_an_account">Don\'t have an account?</string>
     <string name="register_now">Register Now</string>
     <string name="txt_error_message">%1$S*</string>
+    <string name="please_fill_all_required_fields">Please fill all required fields</string>
 
 </resources>
