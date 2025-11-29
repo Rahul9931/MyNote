@@ -14,5 +14,6 @@
     <string name="register_now">Register Now</string>
     <string name="txt_error_message">%1$S*</string>
     <string name="please_fill_all_required_fields">Please fill all required fields</string>
+    <string name="notes">Notes</string>
 
 </resources>
