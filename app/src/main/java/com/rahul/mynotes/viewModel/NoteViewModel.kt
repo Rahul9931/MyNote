@@ -19,6 +19,8 @@ class NoteViewModel @Inject constructor(private val noteRepository: NoteReposito
     val notesLiveData: LiveData<NetworkResult<List<NoteResponse>>>
         get() = noteRepository.notesLiveData
 
+    val noteStatusLiveData = noteRepository.noteStatusLiveData
+
     fun getNotes(){
         viewModelScope.launch {
             noteRepository.getNotes()
@@ -26,14 +28,20 @@ class NoteViewModel @Inject constructor(private val noteRepository: NoteReposito
     }
 
     fun createNote(noteRequest: NoteRequest){
-
+        viewModelScope.launch {
+            noteRepository.createNote(noteRequest)
+        }
     }
 
     fun updateNote(noteId: String, noteRequest: NoteRequest){
-
+        viewModelScope.launch {
+            noteRepository.updateNote(noteId,noteRequest)
+        }
     }
 
     fun deleteNote(noteId: String){
-
+        viewModelScope.launch {
+            noteRepository.deleteNote(noteId)
+        }
     }
 }

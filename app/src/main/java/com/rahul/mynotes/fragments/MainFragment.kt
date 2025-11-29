@@ -86,7 +86,6 @@ class MainFragment : Fragment() {
         var bundle = Bundle()
         bundle.putString("note", Gson().toJson(note))
         findNavController().navigate(R.id.action_mainFragment_to_noteFragment, bundle)
-        Toast.makeText(requireContext(), "${note.title}", Toast.LENGTH_SHORT).show()
     }
 
     override fun onDestroyView() {
