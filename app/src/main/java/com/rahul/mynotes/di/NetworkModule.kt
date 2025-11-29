@@ -1,6 +1,7 @@
 package com.rahul.mynotes.di
 
 import com.rahul.mynotes.api.AuthInterceptor
+import com.rahul.mynotes.api.NoteAPI
 import com.rahul.mynotes.api.UserApi
 import com.rahul.mynotes.utils.ApplicationConstant
 import dagger.Module
@@ -32,6 +33,12 @@ class NetworkModule {
     @Singleton
     fun provideUserApi(retrofit: Retrofit): UserApi{
         return retrofit.create(UserApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideNoteApi(retrofit: Retrofit): NoteAPI{
+        return retrofit.create(NoteAPI::class.java)
     }
 
     @Provides

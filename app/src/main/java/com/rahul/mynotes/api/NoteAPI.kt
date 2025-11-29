@@ -13,13 +13,16 @@ import retrofit2.http.Path
 interface NoteAPI {
 
     @GET(ENDPOINT_NOTE)
-    suspend fun getNote(@Body noteRequest: NoteRequest): Response<NoteResponse>
+    suspend fun getNote(): Response<List<NoteResponse>>
 
     @POST(ENDPOINT_NOTE)
     suspend fun createNote(@Body noteRequest: NoteRequest): Response<NoteResponse>
 
     @PUT(ENDPOINT_NOTE_UPDATE_OR_DELETE)
-    suspend fun updateNote(@Path("noteId") noteId: String): Response<NoteResponse>
+    suspend fun updateNote(
+        @Path("noteId") noteId: String,
+        @Body noteRequest: NoteRequest
+    ): Response<NoteResponse>
 
     @DELETE(ENDPOINT_NOTE_UPDATE_OR_DELETE)
     suspend fun deleteNote(@Path("noteId") noteId: String): Response<NoteResponse>
