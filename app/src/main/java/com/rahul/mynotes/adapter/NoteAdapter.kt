@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.rahul.mynotes.databinding.NoteItemBinding
 import com.rahul.mynotes.model.NoteResponse
 
-class NoteAdapter(): ListAdapter<NoteResponse, NoteAdapter.NoteViewHolder>(ComparatorDiffUtils()) {
+class NoteAdapter(private val onNoteItemClicked: (NoteResponse) -> Unit) : ListAdapter<NoteResponse, NoteAdapter.NoteViewHolder>(ComparatorDiffUtils()) {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -30,6 +30,9 @@ class NoteAdapter(): ListAdapter<NoteResponse, NoteAdapter.NoteViewHolder>(Compa
         fun bind(note: NoteResponse){
             binding.txtTitle.text = note.title
             binding.txtDescription.text = note.description
+            binding.root.setOnClickListener {
+                onNoteItemClicked(note)
+            }
         }
     }
 

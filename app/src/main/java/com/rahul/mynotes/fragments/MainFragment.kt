@@ -11,9 +11,9 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.rahul.mynotes.R
 import com.rahul.mynotes.adapter.NoteAdapter
 import com.rahul.mynotes.databinding.FragmentMainBinding
+import com.rahul.mynotes.model.NoteResponse
 import com.rahul.mynotes.utils.NetworkResult
 import com.rahul.mynotes.viewModel.NoteViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -40,7 +40,7 @@ class MainFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentMainBinding.inflate(inflater, container, false)
-        noteAdapter = NoteAdapter()
+        noteAdapter = NoteAdapter(::onNoteItemClicked)
         return binding.root
     }
 
@@ -70,6 +70,10 @@ class MainFragment : Fragment() {
                 }
             }
         })
+    }
+
+    fun onNoteItemClicked(note: NoteResponse){
+        Toast.makeText(requireContext(), "${note.title}", Toast.LENGTH_SHORT).show()
     }
 
     override fun onDestroyView() {
