@@ -74,6 +74,8 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:$retrofit_version")
     implementation("com.squareup.retrofit2:converter-gson:$retrofit_version")
     implementation("com.squareup.okhttp3:okhttp:4.12.0") // Compatible with Kotlin 2.0.21
+    implementation("com.squareup.okhttp3:logging-interceptor:4.10.0")
+
 
     // Coroutines
     val coroutines_version = "1.10.2"
