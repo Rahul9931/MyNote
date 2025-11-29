@@ -14,8 +14,10 @@ import com.rahul.mynotes.R
 import com.rahul.mynotes.databinding.FragmentRegisterBinding
 import com.rahul.mynotes.model.UserRequest
 import com.rahul.mynotes.utils.NetworkResult
+import com.rahul.mynotes.utils.TokenManager
 import com.rahul.mynotes.viewModel.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class RegisterFragment : Fragment() {
@@ -23,6 +25,9 @@ class RegisterFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val authViewModel by activityViewModels<AuthViewModel>()
+
+    @Inject
+    lateinit var tokenManager: TokenManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,8 +41,8 @@ class RegisterFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentRegisterBinding.inflate(inflater, container, false)
 
-        binding.txtAlreadyAcc.setOnClickListener {
-            findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
+        if (!tokenManager.getToken().isNullOrEmpty()){
+            findNavController().navigate(R.id.action_registerFragment_to_mainFragment)
         }
 
         return binding.root
@@ -45,6 +50,10 @@ class RegisterFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.txtAlreadyAcc.setOnClickListener {
+            findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
+        }
 
         binding.btnSignup.setOnClickListener {
             var validatationResult = validateUserInput()
@@ -86,6 +95,7 @@ class RegisterFragment : Fragment() {
             binding.progressBar.isVisible = false
             when(it){
                 is NetworkResult.Success -> {
+                    tokenManager.setToken(it.data!!.token)
                     findNavController().navigate(R.id.action_registerFragment_to_mainFragment)
                 }
                 is NetworkResult.Error -> {

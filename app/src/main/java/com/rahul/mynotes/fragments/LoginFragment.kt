@@ -13,13 +13,20 @@ import com.rahul.mynotes.R
 import com.rahul.mynotes.databinding.FragmentLoginBinding
 import com.rahul.mynotes.model.UserRequest
 import com.rahul.mynotes.utils.NetworkResult
+import com.rahul.mynotes.utils.TokenManager
 import com.rahul.mynotes.viewModel.AuthViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class LoginFragment : Fragment() {
 
     private var _binding: FragmentLoginBinding? = null
 
     private val authViewModel by activityViewModels<AuthViewModel>()
+
+    @Inject
+    lateinit var tokenManager: TokenManager
     private val binding get() = _binding!!
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,6 +66,7 @@ class LoginFragment : Fragment() {
             binding.progressBar.isVisible = false
             when(it){
                 is NetworkResult.Success -> {
+                    tokenManager.setToken(it.data!!.token)
                     findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
                 }
                 is NetworkResult.Error -> {
