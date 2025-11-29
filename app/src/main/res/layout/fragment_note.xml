@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/edit_note"
-            android:textSize="30sp"
+            android:textSize="24sp"
             android:fontFamily="@font/sf_pro_display_bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:text="@string/title"
             android:layout_marginTop="40dp"
-            android:textSize="24sp"
+            android:textSize="18sp"
             android:fontFamily="@font/sf_pro_display_bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_addedit_title" />
@@ -62,7 +62,7 @@
             android:layout_height="wrap_content"
             android:text="@string/description"
             android:layout_marginTop="40dp"
-            android:textSize="24sp"
+            android:textSize="18sp"
             android:fontFamily="@font/sf_pro_display_bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edt_title" />
