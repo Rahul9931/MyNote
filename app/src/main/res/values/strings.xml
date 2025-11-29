@@ -15,5 +15,12 @@
     <string name="txt_error_message">%1$S*</string>
     <string name="please_fill_all_required_fields">Please fill all required fields</string>
     <string name="notes">Notes</string>
+    <string name="title">Title</string>
+    <string name="enter_the_title">Enter the title</string>
+    <string name="description">Description</string>
+    <string name="enter_the_description">Enter the description</string>
+    <string name="submit">SUBMIT</string>
+    <string name="edit_note">Edit Note</string>
+    <string name="add_note">Add Note</string>
 
 </resources>

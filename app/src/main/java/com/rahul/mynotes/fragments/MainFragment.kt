@@ -10,7 +10,10 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.google.gson.Gson
+import com.rahul.mynotes.R
 import com.rahul.mynotes.adapter.NoteAdapter
 import com.rahul.mynotes.databinding.FragmentMainBinding
 import com.rahul.mynotes.model.NoteResponse
@@ -51,6 +54,13 @@ class MainFragment : Fragment() {
         binding.rvNote.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         binding.rvNote.adapter = noteAdapter
         bindObserver()
+        bindHandler()
+    }
+
+    private fun bindHandler() {
+        binding.addNote.setOnClickListener {
+            findNavController().navigate(R.id.action_mainFragment_to_noteFragment)
+        }
     }
 
     private fun bindObserver() {
@@ -73,6 +83,9 @@ class MainFragment : Fragment() {
     }
 
     fun onNoteItemClicked(note: NoteResponse){
+        var bundle = Bundle()
+        bundle.putString("note", Gson().toJson(note))
+        findNavController().navigate(R.id.action_mainFragment_to_noteFragment, bundle)
         Toast.makeText(requireContext(), "${note.title}", Toast.LENGTH_SHORT).show()
     }
 
